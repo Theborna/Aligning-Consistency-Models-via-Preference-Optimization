@@ -20,18 +20,7 @@ Consistency models represent a powerful class of generative models that can be v
 
 ### Model Architecture
 
-The framework models the consistency model as an RL policy, arriving at the following loss objective.
-
-$$
-\mathcal{L}_\text{DPO}=-\mathbb{E}_{(c,x_{\tau_{H+1}}^w,x_{\tau_{H+1}}^l)\sim\mathcal{D}, x_{\tau_{0:H}}^w\sim q_\theta(x_{\tau_{0:H}}^w|x_{\tau_{H+1}^w},c), x_{\tau_{0:H}}^l\sim q_\theta(x_{\tau_{0:H}}^l|x_{\tau_{H+1}^l},c)}
-\Bigg[\log\sigma\Bigg(\beta\sum_{t=0}^H
-        w(t)\Delta d(x_{\tau_t}^w, x_{\tau_t}^l, \tau_t,c;p_\theta,p_\text{ref})\Bigg)\Bigg]\\
-        \Delta d(x_{\tau_t}^w, x_{\tau_t}^l, \tau_t,c;p_\theta,p_\text{ref})=d(f_\theta(x^w_{\tau_t},\tau_t,c),f_\text{ref}(x^w_{\tau_t},\tau_t,c))
-        -d(f_\theta(x^l_{\tau_t},\tau_t,c),f_\text{ref}(x^l_{\tau_t},\tau_t,c))
-$$
-
-Where $w(t)=\frac{1}{\max\left\{\tau_t^2-\tau_H^2, \epsilon^2\right\}}$, with some sufficiently small $\epsilon>0$, and $q$ being an appropriate approximate. The loss can then be appropriately approximated using monte-carlo methods.
-
+The framework models the consistency model as an RL policy, details explained in `CMDPO.pdf`.
 
 ### Key Innovations
 
