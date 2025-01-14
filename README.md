@@ -4,6 +4,8 @@ This repository presents a novel approach to aligning consistency models using p
 
 ## Overview
 
+This project introduces a novel framework for aligning consistency models with human preferences through an extension of Direct Preference Optimization (DPO). We tackle the unique challenges posed by consistency models' deterministic nature and develop efficient approximation methods for handling intractable distributions. Our approach maintains model consistency while effectively incorporating human feedback, bridging the gap between powerful generative capabilities and desired behavioral alignment.
+
 Consistency models represent a powerful class of generative models that can be viewed as RL policies. Our work provides a framework for aligning these models with human preferences while maintaining their consistency properties.
 
 ### Key Features
@@ -27,6 +29,7 @@ $$
         \Delta d(x_{\tau_t}^w, x_{\tau_t}^l, \tau_t,c;p_\theta,p_\text{ref})=d(f_\theta(x^w_{\tau_t},\tau_t,c),f_\text{ref}(x^w_{\tau_t},\tau_t,c))
         -d(f_\theta(x^l_{\tau_t},\tau_t,c),f_\text{ref}(x^l_{\tau_t},\tau_t,c))
 $$
+
 Where $w(t)=\frac{1}{\max\left\{\tau_t^2-\tau_H^2, \epsilon^2\right\}}$, with some sufficiently small $\epsilon>0$, and $q$ being an appropriate approximate. The loss can then be appropriately approximated using monte-carlo methods.
 
 
